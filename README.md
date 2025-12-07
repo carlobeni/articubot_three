@@ -2,7 +2,7 @@
 ## 1. Crear un nuevo workspace
 
 ```bash
-mkdir -p ~/ros2_robot_ws3/src
+mkdir -p ~/ros2_robot_ws4/src
 cd ~/ros2_robot_ws4
 ```
 ## 2. Clonar repositorio en src
