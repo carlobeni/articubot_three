@@ -3,7 +3,7 @@
 
 ```bash
 mkdir -p ~/ros2_robot_ws3/src
-cd ~/ros2_robot_ws3
+cd ~/ros2_robot_ws4
 ```
 ## 2. Clonar repositorio en src
 ```bash
@@ -41,7 +41,7 @@ Agregar al final del archivo:
 
 ```bash
 source /opt/ros/$ROS_DISTRO/setup.bash
-source ~/ros2_robot_ws3/install/setup.bash # verificar el path correcto
+source ~/ros2_robot_ws4/install/setup.bash # verificar el path correcto
 ```
 
 
