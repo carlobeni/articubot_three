@@ -6,7 +6,7 @@ from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix
 from std_msgs.msg import String
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
-import articubot_three.hw_config as cfg
+import hw_config as cfg
 
 class SensorsReliableListener(Node):
     def __init__(self):
@@ -20,8 +20,6 @@ class SensorsReliableListener(Node):
         )
 
         self.create_subscription(NavSatFix, cfg.TOPIC_GPS, self.cb, qos)
-        self.create_subscription(String, cfg.TOPIC_CMD_SERIAL, self.cb, qos)
-
     def cb(self, msg):
         pass
 

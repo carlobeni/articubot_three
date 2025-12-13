@@ -95,6 +95,7 @@ ros2 control list_controllers
 ## 3. Control con teleop_twist_keyboard con /cmd_vel:=/diff_cont/cmd_vel_unstamped
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/diff_cont/cmd_vel_unstamped
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/cmd_vel_robot
 ```
 
 # 6. Camara
