@@ -44,7 +44,11 @@ endif()
 # Install config, description, launch, worlds
 # =====================================================
 install(
-  DIRECTORY config description launch worlds
+  DIRECTORY 
+    config 
+    description 
+    launch
+    worlds
   DESTINATION share/${PROJECT_NAME}
 )
 
@@ -66,8 +70,10 @@ install(PROGRAMS
   articubot_three/communication/command_talker_node.py
   articubot_three/communication/monitor_node_pc.py
 
-  # Nodo de difusion gazebo + robot real
-  articubot_three/cmd_vel_relay_node.py
+  # Nodos manager
+
+  # Nodos utils
+  articubot_three/utils/cmd_vel_relay_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 ament_package()

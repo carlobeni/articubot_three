@@ -149,7 +149,6 @@ def generate_launch_description():
 
     # =====================================================
     # RELAY: /cmd_vel  ->  /cmd_vel_robot  y  /diff_cont/cmd_vel_unstamped
-    # (ESTO ES LO QUE TE FALTABA: copiar datos realmente)
     # =====================================================
     cmd_vel_relay = Node(
         package="articubot_three",
@@ -197,9 +196,6 @@ def generate_launch_description():
             "qos_reliability": "reliable",
             "qos_depth": 10,
         }],
-        # command_talker escucha cfg.TOPIC_CMD_VEL_ROBOT (típicamente /cmd_vel_robot)
-        # Si en tu hw_config fuese distinto, aquí lo remapeás.
-        # remappings=[(cfg.TOPIC_CMD_VEL_ROBOT, "/cmd_vel_robot")],
     )
 
     monitor = Node(
@@ -220,7 +216,7 @@ def generate_launch_description():
     )
 
     # =====================================================
-    # EVENTO: LANZAR COMUNICACIÓN CUANDO EL ROBOT YA EXISTE
+    # EVENTO HANDLER: LANZAR COMUNICACIÓN CUANDO EL ROBOT YA EXISTE
     # =====================================================
     start_comm_after_spawn = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -250,3 +246,4 @@ def generate_launch_description():
 
         start_comm_after_spawn,
     ])
+

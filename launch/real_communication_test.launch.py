@@ -107,6 +107,32 @@ def generate_launch_description():
                     }],
                 ),
 
+                # ===== KEYBOARD TELEOP =====
+                Node(
+                    package="teleop_twist_keyboard",
+                    executable="teleop_twist_keyboard",
+                    name="teleop",
+                    output="screen",
+                    prefix=["xterm -hold -e"],
+                    # sin remaps: teleop publica /cmd_vel
+                ),
+
+                # =====================================================
+                # RELAY: /cmd_vel  ->  /cmd_vel_robot  y  /diff_cont/cmd_vel_unstamped
+                # (ESTO ES LO QUE TE FALTABA: copiar datos realmente)
+                # =====================================================
+                Node(
+                    package="articubot_three",
+                    executable="cmd_vel_relay_node.py",
+                    name="cmd_vel_relay",
+                    output="screen",
+                    parameters=[{
+                        "input_topic": "/cmd_vel",
+                        "out_robot_topic": "/cmd_vel_robot",
+                        #"out_sim_topic": "/diff_cont/cmd_vel_unstamped",
+                    }],
+                ),
+
                 # ===== MONITOR =====
                 Node(
                     package="articubot_three",
