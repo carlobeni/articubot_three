@@ -17,17 +17,22 @@ def check_domain_id(logger=None):
 
 # ================= TOPICS (FROM PI5) =================
 # READY TO USE
-TOPIC_IMU_GIR_ACC = "pi/sensor/imu_data"
-TOPIC_IMU_MAG = "pi/sensor/imu_mag"
-TOPIC_GPS = "pi/sensor/gps_fix"
-TOPIC_CAMERA = "pi/camera/image_raw"
-# used only internally
-TOPIC_MONITOR = "pi/system/monitor"  
+TOPIC_IMU_GIR_ACC = "/pi/sensor/imu_data"
+TOPIC_IMU_MAG = "/pi/sensor/imu_mag"
+# IN DEVELOPMENT
+TOPIC_GPS = "/pi/sensor/gps_fix"
+TOPIC_CAMERA = "/pi/camera/image_raw"
+TOPIC_IR = "/pi/sensor/IR_measure"
+TOPIC_ULTRASONIC = "/pi/sensor/ultrasonic_read"
+
+# ================= TOPICS (just for PC) =================
+TOPIC_MONITOR = "/pc/system/monitor"  
+TOPIC_HEADING_MAG    = "/pc/internal/heading_mag"     # heading solo magnetómetro
+TOPIC_HEADING_KALMAN = "/pc/internal/heading_kalman"  # heading fusionado (PC)
+
+# ================= COMMAND =================
 TOPIC_CMD_SERIAL_MEGA = "/cmd_serial"
 
-# IN DEVELOPMENT
-TOPIC_IR = "pi/sensor/IR_measure"
-TOPIC_ULTRASONIC = "pi/sensor/ultrasonic_read"
 
 
 # ================= COMMAND =================
