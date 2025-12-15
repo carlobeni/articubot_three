@@ -33,6 +33,7 @@ def generate_launch_description():
             "pkill -f monitor_node_pc.py || true; "
             "pkill -f teleop_twist_keyboard || true; "
             "pkill -f cmd_vel_relay_node.py || true"
+            "pkill -f heading_estimator_node.py || true"
         ],
         output="screen"
     )
@@ -198,6 +199,17 @@ def generate_launch_description():
         }],
     )
 
+    est_heading_compass = Node(
+        package="articubot_three",
+        executable="heading_estimator_node.py",
+        name="heading_estimator",
+        output="screen",
+        parameters=[{
+            "qos_reliability": "reliable",
+            "qos_depth": 10,
+        }],
+    )
+
     monitor = Node(
         package="articubot_three",
         executable="monitor_node_pc.py",
@@ -222,8 +234,9 @@ def generate_launch_description():
         event_handler=OnProcessExit(
             target_action=spawn_entity,
             on_exit=[
-                sensors_fast_listener,
+                sensors_fast_listener,                
                 sensors_reliable_listener,
+                est_heading_compass,
                 command_talker,
                 monitor,
                 teleop,

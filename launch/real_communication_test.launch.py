@@ -23,6 +23,7 @@ def generate_launch_description():
             "pkill -f sensors_reliable_listener_node.py || true; "
             "pkill -f command_talker_node.py || true; "
             "pkill -f monitor_node_pc.py || true; "
+            "pkill -f heading_estimator_node.py || true; "
             "pkill -f twist_mux || true"
         ],
         output="screen"

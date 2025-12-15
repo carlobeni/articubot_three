@@ -87,10 +87,13 @@ class CommandTalker(Node):
 
         self.cmd_id += 1
 
+        # cmd_txt = (
+        #     f"{self.cmd_id}:MOVE "
+        #     f"{vx:.3f} {vy:.3f} "
+        #     f"{yaw:.3f} {pitch:.3f} {roll:.3f}"
+        # )
         cmd_txt = (
-            f"{self.cmd_id}:MOVE "
-            f"{vx:.3f} {vy:.3f} "
-            f"{yaw:.3f} {pitch:.3f} {roll:.3f}"
+            f"{self.cmd_id}:SET90"
         )
 
         out = String()

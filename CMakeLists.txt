@@ -73,7 +73,8 @@ install(PROGRAMS
   # Nodos manager
 
   # Nodos utils
-  articubot_three/utils/cmd_vel_relay_node.py
+  articubot_three/utils/cmd_vel_relay_node.py # nodo para difusion de robot+gazebo
+  articubot_three/communication/heading_estimator_node.py # nodo para estimation de heading
   DESTINATION lib/${PROJECT_NAME}
 )
 ament_package()

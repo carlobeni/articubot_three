@@ -3,7 +3,7 @@
 
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import Vector3Stamped
+from sensor_msgs.msg import Imu, MagneticField
 from sensor_msgs.msg import Range, CompressedImage
 from std_msgs.msg import Int32MultiArray, Float64
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
@@ -20,12 +20,12 @@ class SensorsFastListener(Node):
             depth=10
         )
 
-        self.create_subscription(Vector3Stamped, cfg.TOPIC_IMU_ACCEL, self.cb, qos)
-        self.create_subscription(Vector3Stamped, cfg.TOPIC_IMU_MAG, self.cb, qos)
-        self.create_subscription(Float64, cfg.TOPIC_IMU_COMPASS, self.cb, qos)
+        self.create_subscription(Imu, cfg.TOPIC_IMU_GIR_ACC, self.cb, qos)
+        self.create_subscription(MagneticField, cfg.TOPIC_IMU_MAG, self.cb, qos)
         self.create_subscription(Range, cfg.TOPIC_ULTRASONIC, self.cb, qos)
         self.create_subscription(Int32MultiArray, cfg.TOPIC_IR, self.cb, qos)
         self.create_subscription(CompressedImage, cfg.TOPIC_CAMERA, self.cb, qos)
+
 
     def cb(self, msg):
         pass  # Solo escucha (útil para debug DDS)

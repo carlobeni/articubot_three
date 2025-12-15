@@ -27,8 +27,8 @@ TOPIC_ULTRASONIC = "/pi/sensor/ultrasonic_read"
 
 # ================= TOPICS (just for PC) =================
 TOPIC_MONITOR = "/pc/system/monitor"  
-TOPIC_HEADING_MAG    = "/pc/internal/heading_mag"     # heading solo magnetómetro
-TOPIC_HEADING_KALMAN = "/pc/internal/heading_kalman"  # heading fusionado (PC)
+TOPIC_HEADING_COMPASS    = "/pc/internal/heading_mag"     # heading solo magnetómetro
+TOPIC_HEADING_COMPASS_KALMAN = "/pc/internal/heading_kalman"  # heading fusionado (PC)
 
 # ================= COMMAND =================
 TOPIC_CMD_SERIAL_MEGA = "/cmd_serial"

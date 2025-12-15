@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-
 import math
 import rclpy
 from rclpy.node import Node
 
 from sensor_msgs.msg import Imu, MagneticField
 from std_msgs.msg import Float64
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 import hw_config as cfg
 
@@ -75,21 +75,27 @@ class HeadingEstimator(Node):
     def __init__(self):
         super().__init__("heading_estimator")
 
+        self.qos_sensors = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=10
+        )
+
         # =============================
         # SUBSCRIBERS (DESDE LA PI)
         # =============================
         self.sub_imu = self.create_subscription(
             Imu,
-            cfg.TOPIC_IMU_GIR_ACC,   # "pi/sensor/imu_data"
+            cfg.TOPIC_IMU_GIR_ACC,
             self.cb_imu,
-            10
+            self.qos_sensors
         )
 
         self.sub_mag = self.create_subscription(
             MagneticField,
-            cfg.TOPIC_IMU_MAG,       # "pi/sensor/imu_mag"
+            cfg.TOPIC_IMU_MAG,
             self.cb_mag,
-            10
+            self.qos_sensors
         )
 
         # =============================
@@ -97,14 +103,14 @@ class HeadingEstimator(Node):
         # =============================
         self.pub_heading_mag = self.create_publisher(
             Float64,
-            "pc/imu/heading_mag",
-            10
+            cfg.TOPIC_HEADING_COMPASS,
+            self.qos_sensors
         )
 
         self.pub_heading_kalman = self.create_publisher(
             Float64,
-            "pc/imu/heading_kalman",
-            10
+            cfg.TOPIC_HEADING_COMPASS_KALMAN,
+            self.qos_sensors
         )
 
         self.last_time = self.get_clock().now()
